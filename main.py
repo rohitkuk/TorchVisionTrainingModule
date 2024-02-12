@@ -9,6 +9,27 @@ from utils import *
 from model import *
 from data import *
 
+import sys
+
+models = {
+
+    'resnet101': 'resnet101.pth',
+    'resnet50' : 'resnet50.pth',
+    'resnext50d_32x4d': 'resnext.pth',
+    
+}
+
+FuncMap = {
+    'resnet101' : ResNetModel,
+    'resnet50' : ResNetModel,
+    'resnext50d_32x4d' : ResNextModel,
+    
+}
+
+model_name = sys.argv[1]
+model_path = models[model_name]
+model_func = FuncMap[model_name]
+
 
 # Freezing the Seed for Reproducibility
 seed_everything(seed=42)  # The Answer to Everything
@@ -19,7 +40,7 @@ seed_everything(seed=42)  # The Answer to Everything
 ds = ProductsDataset(root_dir="PnG_HC_clf_torch")
 train_data = ds("train", transforms=image_transforms["train"])
 valid_data = ds("valid", transforms=image_transforms["valid"])
-test_data = ds("test", transforms=image_transforms["valid"])
+test_data  = ds("test", transforms=image_transforms["valid"])
 
 # Dataset Classes
 classes = train_data.classes
@@ -34,7 +55,7 @@ wandb.init(
         "LR": 1e-3,
         "NUM_EPOCHS": 30,
         "BATCH_SIZE": 16,
-        "MODEL_PTH": "resnet101.pth",
+        "MODEL_PTH": model_path,
         "NUM_CLASSES" : len(classes)
     },
 )
@@ -71,7 +92,7 @@ dataloaders = {
 
 # Model and Setups
 # model = ResNextModel(num_classes=2)
-model = ResNetModel(num_classes=config.NUM_CLASSES, model_name="resnet101")
+model = model_func(num_classes=config.NUM_CLASSES, model_name=model_name, pretrained= True)
 
 print(f"The model has {count_parameters(model):,} trainable parameters")
 
