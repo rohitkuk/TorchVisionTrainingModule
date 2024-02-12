@@ -1,0 +1,37 @@
+{
+    "os": "macOS-13.0-arm64-arm-64bit",
+    "python": "3.10.9",
+    "heartbeatAt": "2024-02-12T11:10:43.434688",
+    "startedAt": "2024-02-12T11:10:41.996188",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/rohitkukreja/Ivy/TorchVisionTraining/TorchVisionTrainingModule/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/rohitkuk/TorchVisionTrainingModule.git",
+        "commit": "544da286429175b4f305f969cddeeb31095f333c"
+    },
+    "email": "rohit.kukreja01@gmail.com",
+    "root": "/Users/rohitkukreja/Ivy/TorchVisionTraining/TorchVisionTrainingModule",
+    "host": "Rohits-MacBook-Air.local",
+    "username": "rohitkukreja",
+    "executable": "/opt/homebrew/anaconda3/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "disk": {
+        "/": {
+            "total": 228.27386474609375,
+            "used": 212.56256103515625
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 8.0
+    }
+}
